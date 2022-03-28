@@ -1,6 +1,10 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './Css/App.css';
+
+import Header from './Components/Header.jsx';
+//import AddItem from './Components/AddItem.jsx';
+import ItemList from './Components/ItemList.jsx';
+
 
 class App extends React.Component {
   state = {
@@ -34,10 +38,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">ReactND - Coding Practice</h1>
-        </header>
+        <Header />
         <h2>Shopping List</h2>
         <form onSubmit={this.addItem}>
           <input
@@ -52,11 +53,7 @@ class App extends React.Component {
         <button onClick={this.deleteLastItem} disabled={this.noItemsFound()}>
           Delete Last Item
         </button>
-
-        <p className="items">Items</p>
-        <ol className="item-list">
-          {this.state.items.map((item, index) => <li key={index}>{item}</li>)}
-        </ol>
+        <ItemList items={this.state.items} />
       </div>
     );
   }
